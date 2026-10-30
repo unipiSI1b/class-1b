@@ -4,145 +4,211 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Portal Kelas SI 1B</title>
-<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Font Baru: Outfit (Headings) & Plus Jakarta Sans (Body) -->
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@500;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#080e1c;--blue:#38bdf8;--light:#7dd3fc;--purple:#818cf8;--green:#4ade80;--white:#f1f5f9;--muted:#94a3b8;--glass:rgba(17,29,52,.62);--border:rgba(125,211,252,.14);--radius:20px;--code:'Fira Code',monospace;--font:'Inter',sans-serif}
+:root{
+  --bg:#030712; --bg-card:rgba(10, 15, 30, 0.6); 
+  --blue:#0ea5e9; --blue-glow:#38bdf8; --light:#e0f2fe; 
+  --purple:#8b5cf6; --green:#10b981; --white:#f8fafc; --muted:#94a3b8;
+  --border:rgba(56, 189, 248, 0.15); --radius:24px;
+  --code:'Fira Code',monospace; 
+  --font-heading:'Outfit',sans-serif; 
+  --font-body:'Plus Jakarta Sans',sans-serif;
+}
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{font-family:var(--font);color:var(--white);background:radial-gradient(ellipse at 10% 0%,rgba(14,116,144,.15),transparent 45%),radial-gradient(ellipse at 90% 30%,rgba(79,70,229,.12),transparent 40%),var(--bg);min-height:100vh;overflow-x:hidden}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{font-family:var(--font-body);color:var(--white);background:radial-gradient(circle at 10% 0%,rgba(14,116,144,.15),transparent 40%),radial-gradient(circle at 90% 80%,rgba(139,92,246,.15),transparent 40%),var(--bg);min-height:100vh;overflow-x:hidden}
 button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
-::selection{background:var(--blue);color:#08111f}
-.background-glow{position:fixed;width:350px;height:350px;border-radius:50%;filter:blur(110px);opacity:.17;pointer-events:none;z-index:-2}
-.glow-one{background:#0284c7;top:-150px;left:-100px}.glow-two{background:#4f46e5;right:-150px;top:45%}
+::selection{background:var(--blue);color:#fff}
+
+/* Scrollbar Modern */
+::-webkit-scrollbar {width: 6px;}
+::-webkit-scrollbar-track {background: var(--bg);}
+::-webkit-scrollbar-thumb {background: rgba(56, 189, 248, 0.4); border-radius: 10px;}
+::-webkit-scrollbar-thumb:hover {background: var(--blue-glow);}
+
+/* Background Ornaments */
+.background-glow{position:fixed;width:50vw;height:50vw;border-radius:50%;filter:blur(150px);opacity:.12;pointer-events:none;z-index:-2}
+.glow-one{background:#0ea5e9;top:-20%;left:-10%}.glow-two{background:#8b5cf6;right:-10%;bottom:-10%}
 #particles{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:-1}
-.particle{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--light);box-shadow:0 0 12px var(--blue);animation:floatParticle linear infinite;opacity:0}
-@keyframes floatParticle{0%{transform:translateY(0);opacity:0}25%{opacity:.7}75%{opacity:.4}100%{transform:translateY(-100px);opacity:0}}
-.glass{background:var(--glass);border:1px solid var(--border);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 12px 35px #0002;transition: border-color 0.3s ease, box-shadow 0.3s ease;}
-.glass:hover {border-color: rgba(125,211,252,.25); box-shadow: 0 15px 45px rgba(0,0,0,0.3);}
-.card{position:relative;overflow:hidden;padding:25px;margin-bottom:24px;border-radius:var(--radius);animation:appear .7s ease both}
-.card:before{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(110deg,transparent,#7dd3fc0e,transparent);transform:skewX(-20deg);pointer-events:none;animation:glassShine 9s ease-in-out infinite}
-@keyframes appear{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
-@keyframes glassShine{0%,65%{left:-120%}100%{left:160%}}
-.navbar{position:sticky;top:0;z-index:100;background:#080e1cc7;border-bottom:1px solid var(--border);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
-.nav-inner{max-width:1120px;min-height:72px;margin:auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
-.brand-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;color:var(--blue);background:#38bdf81f;border:1px solid var(--border);font-family:var(--code);font-weight:600}
-.brand-name{font-size:14px;font-weight:800}.brand-sub{color:var(--muted);font-size:11px;margin-top:4px}
-.nav-links{display:flex;align-items:center;gap:20px;overflow-x:auto}
-.nav-links a{position:relative;color:var(--muted);font-size:12px;white-space:nowrap;transition:color .2s; padding-bottom: 4px;}
-.nav-links a:hover{color:var(--blue)}
-.nav-links a:after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--blue);box-shadow:0 0 8px var(--blue);transition:width .3s ease}
+.particle{position:absolute;width:4px;height:4px;border-radius:50%;background:var(--blue-glow);box-shadow:0 0 15px var(--light);animation:floatParticle linear infinite;opacity:0}
+@keyframes floatParticle{0%{transform:translateY(0) scale(0);opacity:0}25%{opacity:1;transform:scale(1.2)}75%{opacity:.8}100%{transform:translateY(-150px) scale(0);opacity:0}}
+
+/* Glass Card Enhanced */
+.glass{background:var(--bg-card);border:1px solid var(--border);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:0 10px 40px rgba(0,0,0,0.3);transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);}
+.card{position:relative;overflow:hidden;padding:32px;margin-bottom:30px;border-radius:var(--radius);}
+.card:hover {border-color: rgba(56, 189, 248, 0.4); box-shadow: 0 20px 50px rgba(14,165,233,0.15); transform: translateY(-4px);}
+
+/* Animasi Scroll Reveal (Efek Muncul) */
+.reveal {opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);}
+.reveal.active {opacity: 1; transform: translateY(0);}
+
+/* Navbar */
+.navbar-wrapper {position: sticky; top: 20px; z-index: 100; padding: 0 20px; margin-bottom: 30px;}
+.navbar{max-width:1120px;margin:auto;background:rgba(3, 7, 18, 0.6);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius: 50px; box-shadow: 0 15px 35px rgba(0,0,0,0.4); transition: 0.4s;}
+.navbar:hover {background:rgba(3, 7, 18, 0.8); border-color: rgba(56, 189, 248, 0.3);}
+.nav-inner{padding:12px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.brand-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:50%;color:var(--bg);background:linear-gradient(135deg, var(--blue-glow), var(--light));font-family:var(--code);font-weight:700; font-size: 15px; box-shadow: 0 0 20px rgba(56,189,248,0.4);}
+.brand-name{font-family:var(--font-heading); font-size:16px;font-weight:800; letter-spacing: 0.5px;}
+.brand-sub{color:var(--muted);font-size:12px;margin-top:2px; font-weight:500;}
+.nav-links{display:flex;align-items:center;gap:28px;overflow-x:auto}
+.nav-links a{position:relative;color:var(--muted);font-size:13px;font-weight:600;white-space:nowrap;transition:0.3s; padding: 6px 0;}
+.nav-links a:hover{color:var(--white); text-shadow: 0 0 10px rgba(255,255,255,0.3);}
+.nav-links a:after{content:"";position:absolute;left:50%;bottom:0;width:0;height:2px;background:var(--blue-glow);box-shadow:0 0 12px var(--blue-glow);transition:0.4s cubic-bezier(0.4, 0, 0.2, 1); transform: translateX(-50%); border-radius: 2px;}
 .nav-links a:hover:after{width:100%}
-.main-content{max-width:1120px;padding:35px 24px 20px;margin:auto}
-.hero{position:relative;isolation:isolate;padding:40px;border-radius:26px;margin-bottom:25px;overflow:hidden}
-.hero:after{content:"</>";position:absolute;right:35px;bottom:-25px;font-family:var(--code);font-size:130px;font-weight:600;color:#38bdf80b;pointer-events:none}
-.hero:before{content:"";position:absolute;z-index:-1;top:-100%;left:0;width:100%;height:45%;background:linear-gradient(transparent,#38bdf80b,#38bdf81c,transparent);pointer-events:none;animation:scanLine 8s linear infinite}
-@keyframes scanLine{to{top:150%}}
-.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--green);background:#4ade8012;border:1px solid #4ade8026;border-radius:30px;padding:8px 12px;font-family:var(--code);font-size:11px;margin-bottom:22px}
-.status-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
-.hero h1{font-size:clamp(28px,5vw,46px);font-weight:800;line-height:1.2;letter-spacing:-1.7px;margin-bottom:15px;overflow-wrap:anywhere}
-.hero h1 span{display:inline-block;color:var(--blue);text-shadow:0 0 12px #38bdf855;animation:neonPulse 3s ease-in-out infinite}
-@keyframes neonPulse{0%,100%{text-shadow:0 0 8px #38bdf833}50%{text-shadow:0 0 20px #38bdf899,0 0 35px #818cf844}}
-.hero p{color:var(--muted);font-size:14px;line-height:1.8;max-width:620px}
-.hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:25px}
-.meta-chip{padding:9px 13px;border:1px solid var(--border);background:#ffffff06;color:#cbd5e1;border-radius:9px;font-size:11px}
-.section-heading{display:flex;align-items:flex-start;gap:13px;margin-bottom:22px}
-.section-icon{width:42px;height:42px;flex-shrink:0;display:grid;place-items:center;border-radius:12px;background:#38bdf81a;border:1px solid var(--border);color:var(--blue);font-size:18px}
-.section-heading h2{font-size:17px;font-weight:700;margin:2px 0 6px}
-.section-heading p{font-size:12px;color:var(--muted);line-height:1.7}
-.section-number{margin-left:auto;color:#475569;font-family:var(--code);font-size:11px;padding-top:5px}
 
-/* CSS GALERI SLIDER BARU - RASIO 16:9 */
-.group-photo{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:15px;background:#0b1425;border:1px solid var(--border)}
-.slider-track{display:flex;width:100%;height:100%;transition:transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)}
+.main-content{max-width:1120px;padding:10px 24px 40px;margin:auto}
+
+/* Hero Section */
+.hero{position:relative;isolation:isolate;padding:60px 50px;border-radius:32px;margin-bottom:40px; overflow:hidden; border: 1px solid rgba(56,189,248,0.25);}
+.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at top right, rgba(56,189,248,0.1), transparent 50%); z-index:-1;}
+.hero-bg-icon{position:absolute;right:30px;bottom:-20px;font-family:var(--code);font-size:180px;font-weight:800;color:rgba(56,189,248,0.03);pointer-events:none; animation: floatIcon 6s ease-in-out infinite;}
+@keyframes floatIcon { 0%,100% {transform: translateY(0) rotate(-5deg);} 50% {transform: translateY(-20px) rotate(0deg);} }
+
+.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--green);background:rgba(16, 185, 129, 0.1);border:1px solid rgba(16, 185, 129, 0.25);border-radius:30px;padding:6px 16px;font-family:var(--code);font-size:12px;font-weight:600;margin-bottom:28px; box-shadow: 0 0 20px rgba(16,185,129,0.1);}
+.status-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 15px var(--green); animation: pulseDot 2s infinite;}
+@keyframes pulseDot { 0% {box-shadow: 0 0 0 0 rgba(16,185,129,0.5);} 70% {box-shadow: 0 0 0 12px rgba(16,185,129,0);} 100% {box-shadow: 0 0 0 0 rgba(16,185,129,0);} }
+
+.hero h1{font-family:var(--font-heading); font-size:clamp(36px, 6vw, 60px);font-weight:900;line-height:1.1;letter-spacing:-1.5px;margin-bottom:22px;overflow-wrap:anywhere}
+/* Efek Shimmer Text */
+.hero h1 span{
+  background: linear-gradient(90deg, #38bdf8 0%, #8b5cf6 50%, #38bdf8 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  color: transparent;
+  animation: shimmerText 4s linear infinite;
+  display:inline-block;
+  filter: drop-shadow(0 0 15px rgba(56,189,248,0.3));
+}
+@keyframes shimmerText { to { background-position: 200% center; } }
+.hero p{color:var(--muted);font-size:16px;line-height:1.8;max-width:680px; font-weight: 400;}
+
+.hero-meta{display:flex;flex-wrap:wrap;gap:14px;margin-top:35px}
+.meta-chip{padding:10px 18px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);color:#e2e8f0;border-radius:14px;font-size:13px; font-weight: 600; backdrop-filter: blur(10px); transition: 0.3s;}
+.meta-chip:hover {background:rgba(255,255,255,0.1); transform: translateY(-2px);}
+
+.section-heading{display:flex;align-items:flex-start;gap:18px;margin-bottom:30px}
+.section-icon{width:50px;height:50px;flex-shrink:0;display:grid;place-items:center;border-radius:16px;background:linear-gradient(135deg, rgba(56,189,248,0.15), rgba(139,92,246,0.15));border:1px solid rgba(56,189,248,0.3);color:var(--blue-glow);font-size:22px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); transition:0.4s;}
+.card:hover .section-icon {transform: scale(1.1) rotate(5deg); box-shadow: 0 10px 30px rgba(56,189,248,0.4); color:#fff;}
+.section-heading h2{font-family:var(--font-heading); font-size:22px;font-weight:800;margin:0 0 6px; color: var(--white);}
+.section-heading p{font-size:14px;color:var(--muted);line-height:1.6}
+.section-number{margin-left:auto;color:rgba(255,255,255,0.2);font-family:var(--font-heading);font-size:24px; font-weight: 900;}
+
+/* GALERI SLIDER */
+.group-photo{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:24px;background:#030712;border:1px solid rgba(255,255,255,0.1); box-shadow: inset 0 0 30px rgba(0,0,0,0.8);}
+.slider-track{display:flex;width:100%;height:100%;transition:transform 0.7s cubic-bezier(0.7, 0, 0.3, 1)}
 .slide{min-width:100%;height:100%;position:relative}
-.slide img{width:100%;height:100%;display:block;object-fit:cover;background:#0002}
-.photo-caption{position:absolute;bottom:0;left:0;right:0;padding:45px 18px 25px;background:linear-gradient(transparent,#050a14f2);font-size:12px;pointer-events:none}
-.slider-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(8,14,28,0.5);color:var(--blue);border:1px solid var(--border);border-radius:50%;width:34px;height:34px;display:grid;place-items:center;cursor:pointer;transition:0.3s;backdrop-filter:blur(4px);z-index:10;font-size:14px}
-.slider-btn:hover{background:var(--blue);color:#08111f;box-shadow:0 0 15px var(--blue)}
-.slider-btn.prev{left:12px}
-.slider-btn.next{right:12px}
-.slider-dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:10}
-.dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.3);cursor:pointer;transition:0.3s}
-.dot.active{background:var(--blue);box-shadow:0 0 8px var(--blue);width:16px;border-radius:10px}
+.slide img{width:100%;height:100%;display:block;object-fit:cover; transition: transform 6s ease;}
+.slide:hover img {transform: scale(1.05);} /* Ken Burns effect on hover */
+.photo-caption{position:absolute;bottom:0;left:0;right:0;padding:60px 26px 30px;background:linear-gradient(transparent,rgba(3,7,18,0.95));font-size:15px;font-weight:600;pointer-events:none; font-family:var(--font-heading); letter-spacing:0.5px;}
+.slider-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:50%;width:44px;height:44px;display:grid;place-items:center;cursor:pointer;transition:0.4s cubic-bezier(0.4, 0, 0.2, 1);backdrop-filter:blur(10px);z-index:10;font-size:18px}
+.slider-btn:hover{background:var(--blue-glow); border-color:var(--blue-glow); color:#000;box-shadow:0 0 25px var(--blue-glow); transform: translateY(-50%) scale(1.15);}
+.slider-btn.prev{left:20px}
+.slider-btn.next{right:20px}
+.slider-dots{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:10}
+.dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.3);cursor:pointer;transition:0.4s cubic-bezier(0.4, 0, 0.2, 1)}
+.dot.active{background:var(--blue-glow);box-shadow:0 0 15px var(--blue-glow);width:30px;border-radius:10px}
 
-/* Floating Music Player Playlist Widget */
-.floating-audio{position:fixed;bottom:20px;right:20px;z-index:999;display:flex;flex-direction:column;gap:6px;padding:12px 15px;border-radius:16px;background:rgba(8, 14, 28, 0.9);border:1px solid var(--border);backdrop-filter:blur(12px);box-shadow:0 8px 25px rgba(0,0,0,0.6);width:260px}
-.audio-header{display:flex;align-items:center;justify-content:space-between}
-.mini-info{font-size:11px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:160px}
-.mini-title{color:var(--white);font-weight:700;display:block}
-.audio-controls{display:flex;align-items:center;gap:6px}
-.ctrl-btn{background:none;border:1px solid var(--border);color:var(--blue);border-radius:50%;width:26px;height:26px;display:grid;place-items:center;font-size:10px;transition:0.2s}
-.ctrl-btn:hover{background:var(--blue);color:var(--bg)}
-.floating-audio audio{height:32px;width:100%;margin-top:4px}
+/* Pengurus Cards (Magnetic/Bouncy Feel) */
+.org-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.org-card{position:relative;overflow:hidden;padding:30px 16px;text-align:center;border-radius:22px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);transition:all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)}
+.org-card:hover{transform:translateY(-12px);border-color:rgba(56, 189, 248, 0.5);background:rgba(56, 189, 248, 0.08);box-shadow:0 15px 35px rgba(56,189,248,0.2)}
+.photo{width:90px;height:90px;margin:0 auto 20px;border-radius:50%;display:block;object-fit:cover;border:3px solid rgba(255, 255, 255, 0.1);background:#030712; transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);}
+.org-card:hover .photo{box-shadow:0 0 25px rgba(56, 189, 248, 0.6); transform: scale(1.15) rotate(3deg); border-color: var(--blue-glow);}
+.org-role{display:inline-block;color:var(--blue-glow);font-family:var(--font-heading);font-size:11px;font-weight:800; letter-spacing: 0.5px; background: rgba(56, 189, 248, 0.15); padding: 6px 14px; border-radius: 12px; margin-bottom:14px; transition: 0.3s;}
+.org-card:hover .org-role {background: var(--blue-glow); color: #000; box-shadow: 0 0 15px var(--blue-glow);}
+.org-card h3{font-family:var(--font-heading); font-size:15px;line-height:1.4;font-weight:700;overflow-wrap:anywhere}.org-card p{color:var(--muted);font-size:12px;line-height:1.6;margin-top:8px}
 
-.org-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
-.org-card{position:relative;min-width:0;overflow:hidden;padding:22px 13px;text-align:center;border-radius:15px;border:1px solid #ffffff12;background:#ffffff06;transition:transform .3s cubic-bezier(0.4, 0, 0.2, 1),border-color .3s,background .3s}
-.org-card:hover{transform:translateY(-8px);border-color:#38bdf859;background:#38bdf80e;box-shadow:0 10px 25px #38bdf81c}
-.photo{width:76px;height:76px;margin:0 auto 15px;border-radius:50%;display:block;object-fit:cover;border:2px solid #38bdf866;background:#101c30; transition: transform 0.3s ease}
-.org-card:hover .photo{box-shadow:0 0 18px #38bdf855; transform: scale(1.05);}
-.org-role{display:inline-block;color:var(--blue);font-family:var(--code);font-size:10px;line-height:1.6;margin-bottom:9px}
-.org-card h3{font-size:12px;line-height:1.7;overflow-wrap:anywhere}.org-card p{color:var(--muted);font-size:10px;line-height:1.6;margin-top:6px}
-.member-group{padding:20px;border-radius:15px;background:#ffffff05;border:1px solid #ffffff10;margin-bottom:15px}
+/* Anggota Tags */
+.member-group{padding:26px;border-radius:20px;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.05);margin-bottom:24px}
 .member-group:last-child{margin-bottom:0}
-.array-title{font-family:var(--code);color:var(--muted);font-size:12px;margin-bottom:15px}
+.array-title{font-family:var(--code);color:var(--muted);font-size:14px;margin-bottom:18px}
 .keyword{color:#c792ea}.variable{color:#e5c07b}
-.members-grid{display:flex;flex-wrap:wrap;gap:8px}
-.member-tag{display:inline-block;max-width:100%;overflow-wrap:anywhere;padding:9px 11px;border-radius:8px;border:1px solid #7dd3fc1a;background:#0f172a8c;color:#cbd5e1;font-family:var(--code);font-size:10px;transition:.2s}
-.member-tag:hover{border-color:#38bdf866;color:var(--light);box-shadow:0 0 12px #38bdf822; transform: translateY(-2px);}
-.form-group{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}
-.form-group input,.form-group textarea{width:100%;padding:14px;color:var(--white);background:#040a2280;border:1px solid var(--border);border-radius:10px;outline:none;font-size:12px;transition:border-color .2s}
-.form-group input:focus,.form-group textarea:focus{border-color:var(--blue); box-shadow: 0 0 10px rgba(56,189,248,0.1);}
-.action-btn{padding:14px 22px;border-radius:10px;border:1px solid #38bdf866;color:#06111f;background:var(--blue);font-size:12px;font-weight:700;transition:.3s; cursor: pointer; text-align: center; display: inline-flex; align-items: center; justify-content: center; gap: 8px;}
-.action-btn:hover{background:var(--light);box-shadow:0 0 20px #38bdf826; transform: translateY(-2px);}
-.btn-pay{background: linear-gradient(135deg, #38bdf8, #818cf8); color: #08111f; font-size: 14px; border: none; box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4); margin-top: 15px;}
-.btn-pay:hover{box-shadow: 0 6px 25px rgba(56, 189, 248, 0.6); transform: translateY(-3px);}
-.btn-pay-baju{background: linear-gradient(135deg, #4ade80, #38bdf8); color: #08111f; font-size: 14px; border: none; box-shadow: 0 4px 15px rgba(74, 222, 128, 0.4); margin-top: 15px;}
-.btn-pay-baju:hover{box-shadow: 0 6px 25px rgba(74, 222, 128, 0.6); transform: translateY(-3px);}
+.members-grid{display:flex;flex-wrap:wrap;gap:12px}
+.member-tag{display:inline-block;padding:10px 16px;border-radius:12px;border:1px solid rgba(255,255,255,0.08);background:rgba(15, 23, 42, 0.8);color:#e2e8f0;font-family:var(--font-heading);font-size:12px;font-weight:600;transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor:default;}
+.member-tag:hover{border-color:var(--blue-glow);background: rgba(56, 189, 248, 0.15);color:var(--white);box-shadow:0 8px 20px rgba(56,189,248,0.3); transform: translateY(-4px) scale(1.05);}
 
-.announcement-list{display:flex;flex-direction:column;gap:12px;margin-top:20px}
-.announcement-item{padding:17px;border:1px solid #7dd3fc1a;border-left:3px solid var(--blue);border-radius:5px 12px 12px 5px;background:#ffffff06;font-size:12px;line-height:1.8;overflow-wrap:anywhere}
-.announcement-label{color:var(--blue);font-family:var(--code);font-size:10px;display:block;margin-bottom:7px}
-.announcement-text{white-space:pre-wrap}.time{display:block;margin-top:9px;color:#64748b;font-family:var(--code);font-size:10px}
+/* Inputs & Buttons Enhanced */
+.form-group{display:flex;flex-direction:column;gap:16px;margin-bottom:24px}
+.form-group input,.form-group textarea{width:100%;padding:18px;color:var(--white);background:rgba(0,0,0,0.4);border:2px solid rgba(255,255,255,0.08);border-radius:16px;outline:none;font-size:14px;transition:0.3s; font-family: var(--font-body);}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--blue-glow); background:rgba(3,7,18,0.8); box-shadow: 0 0 20px rgba(56,189,248,0.2);}
+.form-group input::placeholder, .form-group textarea::placeholder {color: rgba(255,255,255,0.3); font-weight: 500;}
 
-/* Modal Styling untuk QRIS */
-.modal-overlay {position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(8, 14, 28, 0.85); backdrop-filter: blur(8px); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: 0.3s ease;}
+.action-btn{padding:18px 28px;border-radius:16px;border:none;font-size:14px;font-family:var(--font-heading);font-weight:800;letter-spacing:1px;transition:all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; text-align: center; display: inline-flex; align-items: center; justify-content: center; gap: 10px; text-transform: uppercase; position: relative; overflow: hidden;}
+.action-btn::before {content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition:0.5s;}
+.action-btn:hover::before {left:100%;}
+
+.btn-submit {background:var(--blue-glow); color:#000; box-shadow: 0 10px 25px rgba(56,189,248,0.3);}
+.btn-submit:hover{background:#fff; box-shadow:0 12px 35px rgba(56,189,248,0.5); transform: translateY(-4px);}
+
+.btn-pay{background: linear-gradient(135deg, #0ea5e9, #8b5cf6); color: #fff; box-shadow: 0 10px 25px rgba(14, 165, 233, 0.4); margin-top: 15px;}
+.btn-pay:hover{box-shadow: 0 15px 35px rgba(139, 92, 246, 0.6); transform: translateY(-5px) scale(1.02);}
+
+.btn-pay-baju{background: linear-gradient(135deg, #10b981, #0ea5e9); color: #fff; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4); margin-top: 15px;}
+.btn-pay-baju:hover{box-shadow: 0 15px 35px rgba(14, 165, 233, 0.6); transform: translateY(-5px) scale(1.02);}
+
+/* Announcements */
+.announcement-list{display:flex;flex-direction:column;gap:16px;margin-top:28px}
+.announcement-item{padding:24px;border:1px solid rgba(255,255,255,0.06);border-left:5px solid var(--blue-glow);border-radius:12px 20px 20px 12px;background:rgba(255,255,255,0.02);font-size:14px;line-height:1.7;overflow-wrap:anywhere; transition: 0.4s;}
+.announcement-item:hover {background:rgba(56,189,248,0.05); border-color: rgba(56,189,248,0.2); transform: translateX(5px);}
+.announcement-label{color:var(--blue-glow);font-family:var(--font-heading);font-size:12px;font-weight:800;letter-spacing:0.5px;display:block;margin-bottom:10px}
+.announcement-text{white-space:pre-wrap; color: var(--light);}.time{display:block;margin-top:14px;color:var(--muted);font-family:var(--code);font-size:11px}
+
+/* Smooth Modals */
+.modal-overlay {position: fixed; inset: 0; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(15px); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);}
 .modal-overlay.active {opacity: 1; visibility: visible;}
-.modal-content {background: var(--glass); border: 1px solid var(--border); padding: 30px; border-radius: var(--radius); text-align: center; max-width: 90%; width: 360px; position: relative; transform: translateY(30px); transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 20px 50px rgba(0,0,0,0.5);}
-.modal-overlay.active .modal-content {transform: translateY(0);}
-.close-modal {position: absolute; top: 15px; right: 15px; background: none; border: none; color: var(--muted); font-size: 24px; cursor: pointer; transition: 0.2s;}
-.close-modal:hover {color: #f43f5e;}
-.qr-container {background: #fff; padding: 15px; border-radius: 12px; margin: 20px auto; width: fit-content; border: 3px solid var(--blue);}
-.qr-container-baju {background: #fff; padding: 15px; border-radius: 12px; margin: 20px auto; width: fit-content; border: 3px solid var(--green);}
-.qr-container img, .qr-container-baju img {width: 200px; height: 200px; object-fit: contain; display: block;}
-.qris-title {font-size: 18px; font-weight: 700; margin-bottom: 5px; color: var(--white);}
-.qris-desc {font-size: 12px; color: var(--muted); line-height: 1.6;}
-.qris-note {font-size: 11px; color: var(--green); font-family: var(--code); margin-top: 15px; padding-top: 15px; border-top: 1px dashed var(--border);}
+.modal-content {background: rgba(10, 15, 30, 0.9); border: 1px solid rgba(255,255,255,0.15); padding: 40px 32px; border-radius: 32px; text-align: center; max-width: 90%; width: 400px; position: relative; transform: scale(0.8) translateY(30px); transition: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 0 20px rgba(56,189,248,0.1);}
+.modal-overlay.active .modal-content {transform: scale(1) translateY(0);}
+.close-modal {position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.08); border: none; color: var(--white); font-size: 22px; width:40px; height:40px; border-radius:50%; display:grid; place-items:center; cursor: pointer; transition: 0.3s;}
+.close-modal:hover {background: #ef4444; transform: rotate(90deg);}
+.qr-container {background: #fff; padding: 20px; border-radius: 24px; margin: 26px auto; width: fit-content; border: 5px solid var(--blue-glow); box-shadow: 0 15px 35px rgba(56,189,248,0.3);}
+.qr-container-baju {background: #fff; padding: 20px; border-radius: 24px; margin: 26px auto; width: fit-content; border: 5px solid var(--green); box-shadow: 0 15px 35px rgba(16,185,129,0.3);}
+.qr-container img, .qr-container-baju img {width: 220px; height: 220px; object-fit: contain; display: block; border-radius: 10px;}
+.qris-title {font-family:var(--font-heading); font-size: 22px; font-weight: 800; margin-bottom: 10px; color: var(--white);}
+.qris-desc {font-size: 14px; color: var(--muted); line-height: 1.6;}
+.qris-note {font-size: 13px; color: var(--light); background: rgba(56,189,248,0.1); padding: 14px; border-radius: 14px; margin-top: 24px; text-align: left; line-height: 1.6; border-left: 4px solid var(--blue-glow);}
 
-#notification{position:fixed;z-index:20000;top:90px;left:50%;transform:translateX(-50%);width:max-content;max-width:calc(100% - 30px);padding:13px 18px;border:1px solid var(--green);border-radius:12px;background:#0a2822f2;color:var(--white);font-size:12px;line-height:1.6;box-shadow:0 12px 35px #0005;transition:opacity .25s,visibility .25s}
-.hidden{opacity:0;visibility:hidden;pointer-events:none}
-.footer{text-align:center;padding:30px 15px 35px;color:#64748b;font-size:11px;line-height:2}
-.footer span{color:var(--blue);font-family:var(--code)}
+/* Audio Player */
+.floating-audio{position:fixed;bottom:30px;right:30px;z-index:999;display:flex;flex-direction:column;gap:10px;padding:16px 20px;border-radius:24px;background:rgba(3, 7, 18, 0.85);border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(20px);box-shadow:0 20px 40px rgba(0,0,0,0.6);width:300px; transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);}
+.floating-audio:hover {border-color: rgba(56, 189, 248, 0.4); transform: translateY(-5px) scale(1.02); box-shadow:0 25px 50px rgba(56,189,248,0.2);}
+.audio-header{display:flex;align-items:center;justify-content:space-between}
+.mini-info{font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px}
+.mini-title{font-family:var(--font-heading); color:var(--white);font-weight:800;display:block;font-size:14px; margin-bottom: 2px;}
+.audio-controls{display:flex;align-items:center;gap:10px}
+.ctrl-btn{background:rgba(255,255,255,0.08);border:none;color:var(--white);border-radius:50%;width:34px;height:34px;display:grid;place-items:center;font-size:12px;transition:0.3s}
+.ctrl-btn:hover{background:var(--blue-glow); color:#000; box-shadow: 0 0 15px var(--blue-glow); transform: scale(1.1);}
+.floating-audio audio{height:36px;width:100%;margin-top:8px; border-radius: 10px;}
 
-@media(max-width:900px){.org-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.nav-inner{flex-wrap:wrap}.nav-links{width:100%;padding-bottom:5px;gap:18px}}
+#notification{position:fixed;z-index:20000;top:100px;left:50%;transform:translateX(-50%);width:max-content;max-width:calc(100% - 40px);padding:16px 26px;border:1px solid var(--green);border-radius:20px;background:rgba(6, 78, 59, 0.95);backdrop-filter:blur(15px);color:var(--white);font-size:14px;font-weight:600;box-shadow:0 20px 45px rgba(16,185,129,0.3);transition:all .4s cubic-bezier(0.34, 1.56, 0.64, 1)}
+.hidden{opacity:0;visibility:hidden;transform:translate(-50%, -30px) scale(0.9) !important;}
+.footer{text-align:center;padding:50px 20px;color:var(--muted);font-size:13px;line-height:2}
+.footer span{color:var(--blue-glow);font-family:var(--font-heading); font-weight:800;}
+
+@media(max-width:900px){.org-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.nav-inner{flex-wrap:wrap}.nav-links{width:100%;padding-bottom:8px;gap:20px; justify-content: center;}}
 @media(max-width:600px){
-.main-content{padding:20px 13px 10px}.nav-inner{padding:12px 15px;gap:12px}.brand-icon{width:38px;height:38px}.brand-name{font-size:12px}.nav-links{gap:16px}.nav-links a{font-size:11px}
-.hero{padding:26px 21px;border-radius:19px}.hero:after{font-size:85px;right:10px}.hero h1{letter-spacing:-1px}.hero p{font-size:12px}
-.card{padding:18px 14px;margin-bottom:16px;border-radius:17px}.section-heading h2{font-size:14px}.section-heading p{font-size:11px}.section-icon{width:37px;height:37px}.section-number{font-size:9px}
-.group-photo{height:auto;} /* Membiarkan tinggi mengikuti rasio 16:9 */
-.slider-btn{width:28px;height:28px;font-size:12px}
-.org-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.org-card{padding:17px 9px}.photo{width:62px;height:62px}.org-card h3{font-size:11px}.org-card p{font-size:10px}
-.member-group{padding:14px 11px}.member-tag{font-size:9px;padding:8px}.action-btn{width:100%;padding:13px}.announcement-item{padding:13px}
-.floating-audio{bottom:15px;right:15px;width:230px}
-.modal-content {width: 95%; padding: 25px 20px;}
-.qr-container img, .qr-container-baju img {width: 160px; height: 160px;}
+.navbar-wrapper {padding: 0 16px;}
+.main-content{padding:10px 16px 20px}
+.nav-inner{padding:14px;gap:16px}
+.brand-icon{width:38px;height:38px; font-size:13px}.brand-name{font-size:14px}.nav-links{gap:20px; justify-content:flex-start;}.nav-links a{font-size:13px}
+.hero{padding:40px 30px;border-radius:26px}.hero-bg-icon{font-size:120px;right:10px; bottom:-10px}.hero h1{letter-spacing:-1px}.hero p{font-size:14px}
+.card{padding:26px 20px;margin-bottom:24px;border-radius:24px}.section-heading h2{font-size:18px}.section-heading p{font-size:13px}.section-icon{width:44px;height:44px; font-size:18px}.section-number{font-size:16px}
+.slider-btn{width:36px;height:36px;font-size:14px}
+.org-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.org-card{padding:22px 14px; border-radius:18px;}.photo{width:76px;height:76px}.org-card h3{font-size:14px}.org-card p{font-size:11px}
+.member-group{padding:20px 16px}.member-tag{font-size:11px;padding:8px 14px}.action-btn{width:100%;padding:16px}.announcement-item{padding:18px}
+.floating-audio{bottom:20px;right:20px;width:calc(100% - 40px); max-width: 320px; padding:14px 18px;}
+.modal-content {width: 95%; padding: 35px 24px; border-radius:26px;}
+.qr-container img, .qr-container-baju img {width: 180px; height: 180px;}
 }
 </style>
 </head>
 <body>
 <div class="background-glow glow-one"></div><div class="background-glow glow-two"></div><div id="particles"></div>
 
-<!-- Pemutar Musik Playlist Melayang -->
+<!-- Pemutar Musik -->
 <div class="floating-audio">
   <div class="audio-header">
     <div class="mini-info">
@@ -159,70 +225,72 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit;text-de
   </audio>
 </div>
 
-<nav class="navbar"><div class="nav-inner">
-<a class="brand" href="#beranda"><div class="brand-icon">1B</div><div><div class="brand-name">PORTAL KELAS</div><div class="brand-sub">Sistem Informasi</div></div></a>
-<div class="nav-links"><a href="#beranda">Beranda</a><a href="#fotbar">Galeri</a><a href="#pengurus">Pengurus</a><a href="#anggota">Anggota</a><a href="#kas">Kas</a><a href="#baju">Baju</a><a href="#pengumuman">Info</a></div>
-</div></nav>
+<!-- Floating Pill Navbar -->
+<div class="navbar-wrapper">
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a class="brand" href="#beranda">
+        <div class="brand-icon">1B</div>
+        <div><div class="brand-name">PORTAL KELAS</div><div class="brand-sub">Sistem Informasi</div></div>
+      </a>
+      <div class="nav-links">
+        <a href="#beranda">Beranda</a>
+        <a href="#fotbar">Galeri</a>
+        <a href="#pengurus">Pengurus</a>
+        <a href="#anggota">Anggota</a>
+        <a href="#kas">Kas</a>
+        <a href="#baju">Baju</a>
+        <a href="#pengumuman">Info</a>
+      </div>
+    </div>
+  </nav>
+</div>
 
 <main class="main-content" id="kontenUtama">
 <div id="notification" class="hidden" role="status" aria-live="polite"></div>
 
-<header class="hero glass" id="beranda">
+<header class="hero glass reveal" id="beranda">
+<div class="hero-bg-icon">&lt;/&gt;</div>
 <div class="eyebrow"><span class="status-dot"></span> CLASS PORTAL / ONLINE</div>
 <h1>Welcome to<br><span>Information Systems 1B.</span></h1>
-<p>Ruang digital untuk berbagi informasi, mengenal keluarga kelas, menyimpan kenangan, dan tumbuh bersama sebagai mahasiswa Sistem Informasi.</p>
+<p>Ruang digital modern untuk berbagi informasi, mengenal keluarga kelas, menyimpan kenangan, dan tumbuh bersama sebagai mahasiswa Sistem Informasi.</p>
 <div class="hero-meta"><div class="meta-chip">🎓 Universitas Insan Pembangunan Indonesia</div><div class="meta-chip">💻 Information Systems</div><div class="meta-chip">✦ Class 1B</div></div>
 </header>
 
-<section class="card glass" id="fotbar">
-<div class="section-heading"><div class="section-icon">▧</div><div><h2>Our Class Memories</h2><p>Setiap momen punya cerita.</p></div><div class="section-number">01 / GALLERY</div></div>
-<!-- GALERI SLIDER BARU DENGAN RASIO 16:9 DAN 4 FOTO -->
+<section class="card glass reveal" id="fotbar">
+<div class="section-heading"><div class="section-icon">▧</div><div><h2>Our Class Memories</h2><p>Setiap momen punya cerita.</p></div><div class="section-number">01</div></div>
 <div class="group-photo">
   <div class="slider-track" id="gallerySlider">
-    <div class="slide">
-      <img src="FOTBAR.jpeg" alt="Foto bersama mahasiswa Sistem Informasi 1B 1">
-      <div class="photo-caption">Information Systems 1B — Together We Grow.</div>
-    </div>
-    <div class="slide">
-      <img src="FOTBAR2.jpeg" alt="Foto bersama mahasiswa Sistem Informasi 1B 2">
-      <div class="photo-caption">Keseruan di kelas Sistem Informasi.</div>
-    </div>
-    <div class="slide">
-      <img src="FOTBAR3.jpeg" alt="Foto bersama mahasiswa Sistem Informasi 1B 3">
-      <div class="photo-caption">Memori kebersamaan angkatan kita.</div>
-    </div>
-    <!-- Slot Foto Keempat -->
-    <div class="slide">
-      <img src="FOTBAR4.jpeg" alt="Foto bersama mahasiswa Sistem Informasi 1B 4">
-      <div class="photo-caption">Keluarga besar Sistem Informasi 1B.</div>
-    </div>
+    <div class="slide"><img src="FOTBAR.jpeg" alt="Fotbar 1"><div class="photo-caption">Information Systems 1B — Together We Grow.</div></div>
+    <div class="slide"><img src="FOTBAR2.jpeg" alt="Fotbar 2"><div class="photo-caption">Keseruan di kelas Sistem Informasi.</div></div>
+    <div class="slide"><img src="FOTBAR3.jpeg" alt="Fotbar 3"><div class="photo-caption">Memori kebersamaan angkatan kita.</div></div>
+    <div class="slide"><img src="FOTBAR4.jpeg" alt="Fotbar 4"><div class="photo-caption">Keluarga besar Sistem Informasi 1B.</div></div>
   </div>
-  
-  <button class="slider-btn prev" onclick="moveSlide(-1)">❮</button>
-  <button class="slider-btn next" onclick="moveSlide(1)">❯</button>
+  <!-- Tombol Navigasi Manual diubah fungsinya ke moveSlideManual -->
+  <button class="slider-btn prev" onclick="moveSlideManual(-1)">❮</button>
+  <button class="slider-btn next" onclick="moveSlideManual(1)">❯</button>
   <div class="slider-dots" id="sliderDots"></div>
 </div>
 </section>
 
-<section class="card glass" id="pengurus">
-<div class="section-heading"><div class="section-icon">♙</div><div><h2>Class Organization</h2><p>Struktur pengurus kelas Sistem Informasi 1B.</p></div><div class="section-number">02 / TEAM</div></div>
+<section class="card glass reveal" id="pengurus">
+<div class="section-heading"><div class="section-icon">♙</div><div><h2>Class Organization</h2><p>Struktur pengurus kelas Sistem Informasi 1B.</p></div><div class="section-number">02</div></div>
 <div class="org-grid">
-<article class="org-card"><img src="DIMAS.jpeg" class="photo" alt="Dimas" loading="lazy"><div class="org-role">KETUA PAGI</div><h3>Dimas Andhika Prabaswara</h3></article>
-<article class="org-card"><img src="MAESA.jpeg" class="photo" alt="Maeza" loading="lazy"><div class="org-role">KETUA MALAM</div><h3>Maeza Zuda Pratama</h3></article>
+<article class="org-card"><img src="DIMAS.jpeg" class="photo" alt="Dimas" loading="lazy"><div class="org-role">KETUA PAGI</div><h3>Dimas Andhika P.</h3></article>
+<article class="org-card"><img src="MAESA.jpeg" class="photo" alt="Maeza" loading="lazy"><div class="org-role">KETUA MALAM</div><h3>Maeza Zuda P.</h3></article>
 <article class="org-card"><img src="REZA.jpeg" class="photo" alt="Aditia" loading="lazy"><div class="org-role">WAKIL KETUA</div><h3>Aditia Fakhreza</h3></article>
 <article class="org-card"><img src="YANN.jpeg" class="photo" alt="Rizki" loading="lazy"><div class="org-role">SEKRETARIS 1</div><h3>Rizki Pebrian</h3></article>
 <article class="org-card"><img src="ROMDON.jpeg" class="photo" alt="Romdoni" loading="lazy"><div class="org-role">SEKRETARIS 2</div><h3>Muhammad Romdoni</h3></article>
 <article class="org-card"><img src="DILA.jpeg" class="photo" alt="Siti" loading="lazy"><div class="org-role">BENDAHARA PAGI 1</div><h3>Siti Khusnul Fadilah</h3></article>
 <article class="org-card"><img src="AVISA.jpeg" class="photo" alt="Avisa" loading="lazy"><div class="org-role">BENDAHARA PAGI 2</div><h3>Avisa Safina Pratiwi</h3></article>
-<article class="org-card"><img src="BINA.jpeg" class="photo" alt="Sabrina" loading="lazy"><div class="org-role">BENDAHARA MALAM 1</div><h3>Sabrina Alyfatunisa</h3></article>
+<article class="org-card"><img src="BRINA.jpeg" class="photo" alt="Sabrina" loading="lazy"><div class="org-role">BENDAHARA MALAM 1</div><h3>Sabrina Alyfatunisa</h3></article>
 <article class="org-card"><img src="YUSUF.jpeg" class="photo" alt="Yusuf" loading="lazy"><div class="org-role">BENDAHARA MALAM 2</div><h3>Yusuf Kurniawan</h3></article>
 <article class="org-card"><img src="LALA.jpeg" class="photo" alt="Badriyatul" loading="lazy"><div class="org-role">KOMINFO 1</div><h3>Badriyatul Kamilah</h3></article>
 <article class="org-card"><img src="SASYA.jpeg" class="photo" alt="Sasya" loading="lazy"><div class="org-role">KOMINFO 2</div><h3>Sasya Adelina</h3></article>
 </div></section>
 
-<section class="card glass" id="anggota">
-<div class="section-heading"><div class="section-icon">⌘</div><div><h2>Class Members</h2><p>Daftar mahasiswa Sistem Informasi 1B berdasarkan kelas reguler.</p></div><div class="section-number">03 / MEMBERS</div></div>
-
+<section class="card glass reveal" id="anggota">
+<div class="section-heading"><div class="section-icon">⌘</div><div><h2>Class Members</h2><p>Daftar mahasiswa Sistem Informasi 1B.</p></div><div class="section-number">03</div></div>
 <div class="member-group"><div class="array-title"><span class="keyword">const</span><span class="variable"> regulerPagi</span> = [</div><div class="members-grid">
 <span class="member-tag">AHMAD ADI</span><span class="member-tag">AINUR ROHMATUS</span><span class="member-tag">AITOR THORIQ</span><span class="member-tag">ALTIRA CLARISA</span><span class="member-tag">AVISA SAFINA</span><span class="member-tag">BADRIYATUL K.</span><span class="member-tag">DANANG MAULANA</span><span class="member-tag">DEWI ALYA</span><span class="member-tag">DIMAS ANDHIKA</span><span class="member-tag">DWI MUTIARA</span><span class="member-tag">DZIKRA ANANDA</span><span class="member-tag">FARDAN ARYA</span><span class="member-tag">HASBY AL GIFARI</span><span class="member-tag">IQBAL RAMADANI</span><span class="member-tag">KEYSHA RAHMA</span><span class="member-tag">LATHIFAH</span><span class="member-tag">MUHAMAD HASSBY</span><span class="member-tag">NADIA NUR</span><span class="member-tag">NAYLA NUR SYIFA</span><span class="member-tag">RAFA NADIRA</span><span class="member-tag">RAHMA PADILLAH</span><span class="member-tag">REBY YASAMONA</span><span class="member-tag">RIFKI RAMADHAN</span><span class="member-tag">RIZKI PEBRIAN</span><span class="member-tag">SAQIB RAIHAN</span><span class="member-tag">SASYA ADELINA</span><span class="member-tag">SITI FAUZIAH</span><span class="member-tag">SITI KHUSNUL</span><span class="member-tag">YUSTISIO GHANIY</span>
 </div></div>
@@ -234,44 +302,39 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit;text-de
 </div></div>
 </section>
 
-<!-- SECTION: Uang Kas -->
-<section class="card glass" id="kas">
-<div class="section-heading"><div class="section-icon">💸</div><div><h2>Uang Kas</h2><p>Bayar uang kas bulanan dengan lebih mudah secara cashless.</p></div><div class="section-number">04 / KAS KELAS</div></div>
+<section class="card glass reveal" id="kas">
+<div class="section-heading"><div class="section-icon">💸</div><div><h2>Treasury & Fund</h2><p>Bayar uang kas bulanan dengan lebih mudah secara cashless.</p></div><div class="section-number">04</div></div>
 <div style="text-align: center; padding: 15px 0 10px;">
-  <p style="color: var(--muted); font-size: 13px; max-width: 500px; margin: 0 auto 20px; line-height: 1.6;">Yuk, dukung kelancaran kegiatan kelas kita dengan membayar uang kas tepat waktu! Pembayaran kini bisa dilakukan via QRIS tanpa biaya admin.</p>
+  <p style="color: var(--muted); font-size: 15px; max-width: 600px; margin: 0 auto 26px; line-height: 1.7;">Yuk, dukung kelancaran kegiatan kelas kita dengan membayar uang kas tepat waktu! Pembayaran kini bisa dilakukan via QRIS tanpa biaya admin.</p>
   <button class="action-btn btn-pay" onclick="openKasModal()">
-    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 4h6v6H4z"/><path d="M14 4h6v6h-6z"/><path d="M4 14h6v6H4z"/><path d="M14 14h6v6h-6z"/></svg>
+    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 4h6v6H4z"/><path d="M14 4h6v6h-6z"/><path d="M4 14h6v6H4z"/><path d="M14 14h6v6h-6z"/></svg>
     Scan QRIS Uang Kas
   </button>
 </div>
 </section>
 
-<!-- SECTION BARU: Baju Angkatan -->
-<section class="card glass" id="baju">
-<div class="section-heading"><div class="section-icon">👕</div><div><h2>Baju Angkatan</h2><p>Pembayaran baju angkatan Sistem Informasi 1B.</p></div><div class="section-number">05 / BAJU ANGKATAN</div></div>
+<section class="card glass reveal" id="baju">
+<div class="section-heading"><div class="section-icon">👕</div><div><h2>Class Merchandise</h2><p>Pembayaran baju angkatan Sistem Informasi 1B.</p></div><div class="section-number">05</div></div>
 <div style="text-align: center; padding: 15px 0 10px;">
-  <p style="color: var(--muted); font-size: 13px; max-width: 500px; margin: 0 auto 20px; line-height: 1.6;">Silakan lakukan pembayaran untuk pemesanan baju angkatan kelas kita. Jangan lupa untuk konfirmasi ke penanggung jawab setelah transfer ya!</p>
+  <p style="color: var(--muted); font-size: 15px; max-width: 600px; margin: 0 auto 26px; line-height: 1.7;">Silakan lakukan pembayaran untuk pemesanan baju angkatan kelas kita. Jangan lupa untuk konfirmasi ke penanggung jawab setelah transfer ya!</p>
   <button class="action-btn btn-pay-baju" onclick="openBajuModal()">
-    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 4h6v6H4z"/><path d="M14 4h6v6h-6z"/><path d="M4 14h6v6H4z"/><path d="M14 14h6v6h-6z"/></svg>
+    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 4h6v6H4z"/><path d="M14 4h6v6h-6z"/><path d="M4 14h6v6H4z"/><path d="M14 14h6v6h-6z"/></svg>
     Scan QRIS Baju Angkatan
   </button>
 </div>
 </section>
 
-<!-- SECTION: Pengumuman -->
-<section class="card glass" id="pengumuman">
-<div class="section-heading"><div class="section-icon">▤</div><div><h2>Class Announcements</h2><p>Informasi dan pengumuman penting untuk kelas Sistem Informasi 1B.</p></div><div class="section-number">06 / INFO</div></div>
-
+<section class="card glass reveal" id="pengumuman">
+<div class="section-heading"><div class="section-icon">▤</div><div><h2>Class Announcements</h2><p>Informasi dan pengumuman penting untuk kelas Sistem Informasi 1B.</p></div><div class="section-number">06</div></div>
 <div class="form-group">
   <input type="password" id="announcementPassword" placeholder="Masukkan Password Khusus">
   <input type="text" id="announcementTitle" placeholder="Judul Pengumuman (Contoh: Jadwal UTS)">
   <textarea id="announcementContent" rows="4" placeholder="Tulis isi pengumuman di sini..."></textarea>
-  <button class="action-btn" onclick="addAnnouncement()">
-    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+  <button class="action-btn btn-submit" onclick="addAnnouncement()">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
     Tambah Pengumuman
   </button>
 </div>
-
 <div class="announcement-list" id="announcementContainer">
   <article class="announcement-item">
     <span class="announcement-label">PENGUMUMAN RESMI</span>
@@ -283,65 +346,84 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit;text-de
 </main>
 
 <footer class="footer">
-  <p>© 2026 Portal Kelas <span>SI 1B</span>. All rights reserved.</p>
+  <p>© 2026 Portal Kelas <span>SI 1B</span>. Dirancang dengan efek modern.</p>
 </footer>
 
-<!-- Modal Popup QRIS Uang Kas -->
+<!-- Modal QRIS -->
 <div class="modal-overlay" id="qrisKasModal">
   <div class="modal-content">
     <button class="close-modal" onclick="closeKasModal()" title="Tutup">×</button>
     <h3 class="qris-title">QRIS Uang Kas SI 1B</h3>
-    <p class="qris-desc">Scan menggunakan aplikasi e-Wallet favoritmu (Gopay, OVO, Dana) atau Mobile Banking.</p>
-    
-    <div class="qr-container">
-      <img src="qriss2.jpg" alt="QR Code Kas">
-    </div>
-    
-    <p class="qris-note">
-      ⚠️ <strong>Penting:</strong> Setelah bayar, mohon *screenshot* bukti transfer dan kirimkan ke Bendahara kelas ya!
-    </p>
+    <p class="qris-desc">Scan menggunakan aplikasi e-Wallet favoritmu atau Mobile Banking.</p>
+    <div class="qr-container"><img src="qriss2.jpg" alt="QR Code Kas"></div>
+    <p class="qris-note">📸 Jangan lupa <strong>screenshot bukti transfer</strong> dan kirimkan ke Bendahara kelas!</p>
   </div>
 </div>
 
-<!-- Modal Popup QRIS Baju Angkatan -->
 <div class="modal-overlay" id="qrisBajuModal">
   <div class="modal-content">
     <button class="close-modal" onclick="closeBajuModal()" title="Tutup">×</button>
     <h3 class="qris-title">QRIS Baju Angkatan</h3>
-    <p class="qris-desc">Pembayaran baju angkatan Kelas Sistem Informasi 1B.</p>
-    
-    <div class="qr-container-baju">
-      <img src="qriss4.jpg" alt="QR Code Baju Angkatan">
-    </div>
-    
-    <p class="qris-note">
-      ⚠️ <strong>Penting:</strong> Setelah bayar, mohon *screenshot* bukti transfer dan konfirmasi ke PJ Baju!
-    </p>
+    <p class="qris-desc">Pembayaran merchandise Kelas Sistem Informasi 1B.</p>
+    <div class="qr-container-baju"><img src="qriss4.jpg" alt="QR Code Baju Angkatan"></div>
+    <p class="qris-note">📸 Jangan lupa <strong>screenshot bukti transfer</strong> dan konfirmasi ke PJ Baju!</p>
   </div>
 </div>
 
 <script>
-// Logic untuk Galeri Foto (Slider)
+// SCROLL REVEAL ANIMATION 
+function reveal() {
+  var reveals = document.querySelectorAll(".reveal");
+  for (var i = 0; i < reveals.length; i++) {
+    var windowHeight = window.innerHeight;
+    var elementTop = reveals[i].getBoundingClientRect().top;
+    var elementVisible = 100;
+    if (elementTop < windowHeight - elementVisible) {
+      reveals[i].classList.add("active");
+    }
+  }
+}
+window.addEventListener("scroll", reveal);
+reveal(); 
+
+// LOGIKA GALERI SLIDER AUTO-PLAY
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
 const dotsContainer = document.getElementById('sliderDots');
 let dots = [];
+let slideInterval; // Variabel untuk menyimpan timer auto-slide
 
-// Buat indikator titik secara otomatis berdasarkan jumlah slide
 if(slides.length > 0) {
+  // Buat titik navigasi
   slides.forEach((_, index) => {
     const dot = document.createElement('div');
     dot.classList.add('dot');
     if (index === 0) dot.classList.add('active');
-    dot.addEventListener('click', () => goToSlide(index));
+    
+    // Saat titik diklik manual
+    dot.addEventListener('click', () => {
+      goToSlide(index);
+      resetSlideTimer(); 
+    });
+    
     dotsContainer.appendChild(dot);
     dots.push(dot);
   });
+  
+  // Mulai otomatis geser
+  startSlideTimer();
 }
 
+// Fungsi utama memindahkan slide
 function moveSlide(direction) {
   currentSlide = (currentSlide + direction + slides.length) % slides.length;
   updateSlider();
+}
+
+// Fungsi untuk tombol panah (manual klik)
+function moveSlideManual(direction) {
+  moveSlide(direction);
+  resetSlideTimer(); 
 }
 
 function goToSlide(index) {
@@ -356,7 +438,21 @@ function updateSlider() {
   if(dots[currentSlide]) dots[currentSlide].classList.add('active');
 }
 
-// Data Playlist Lagu
+// Menjalankan interval otomatis setiap 4 detik
+function startSlideTimer() {
+  slideInterval = setInterval(() => {
+    moveSlide(1);
+  }, 4000); 
+}
+
+// Reset interval supaya gambar tidak lompat saat sedang diklik manual
+function resetSlideTimer() {
+  clearInterval(slideInterval);
+  startSlideTimer();
+}
+
+
+// Playlist Audio
 const playlist = [
   { title: "Kita Kesana", artist: "Hindia", src: "kita ke sana.mp3" },
   { title: "Kita", artist: "Sheila On 7", src: "kita.mp3" },
@@ -364,79 +460,55 @@ const playlist = [
   { title: "Die With A Smile", artist: "Lady Gaga & Bruno Mars", src: "die with a smile.mp3" },
   { title: "Ada Titik-Titik di Ujung Doa", artist: "Sal Priadi", src: "ada titik di ujung doa.mp3" }
 ];
-
 let currentTrackIndex = 0;
-
 function loadTrack(index) {
   const player = document.getElementById('audioPlayer');
-  const source = document.getElementById('audioSource');
-  const titleEl = document.getElementById('trackTitle');
-  const artistEl = document.getElementById('trackArtist');
-  
-  source.src = playlist[index].src;
-  titleEl.textContent = playlist[index].title;
-  artistEl.textContent = playlist[index].artist;
+  document.getElementById('audioSource').src = playlist[index].src;
+  document.getElementById('trackTitle').textContent = playlist[index].title;
+  document.getElementById('trackArtist').textContent = playlist[index].artist;
   player.load();
 }
-
 function nextSong() {
   currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
   loadTrack(currentTrackIndex);
   document.getElementById('audioPlayer').play();
 }
-
 function prevSong() {
   currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
   loadTrack(currentTrackIndex);
   document.getElementById('audioPlayer').play();
 }
 
-// Fungsi Notifikasi
+// Notifikasi Modal & Info
 function showNotification(message) {
   const notif = document.getElementById('notification');
   notif.textContent = message;
   notif.classList.remove('hidden');
   setTimeout(() => { notif.classList.add('hidden'); }, 4000);
 }
-
-// Fitur Modal QRIS Kas & Baju
 function openKasModal() { document.getElementById('qrisKasModal').classList.add('active'); }
 function closeKasModal() { document.getElementById('qrisKasModal').classList.remove('active'); }
 function openBajuModal() { document.getElementById('qrisBajuModal').classList.add('active'); }
 function closeBajuModal() { document.getElementById('qrisBajuModal').classList.remove('active'); }
-
 window.addEventListener('click', function(e) {
   if (e.target === document.getElementById('qrisKasModal')) closeKasModal();
   if (e.target === document.getElementById('qrisBajuModal')) closeBajuModal();
 });
 
-// Fitur Tambah Pengumuman
+// Pengumuman
 function addAnnouncement() {
   const pwdInput = document.getElementById('announcementPassword').value;
   const titleInput = document.getElementById('announcementTitle').value.trim();
   const contentInput = document.getElementById('announcementContent').value.trim();
-  
-  if (pwdInput !== "UNIPI.Sisfo_1B") {
-    showNotification("❌ Password salah! Akses ditolak.");
-    return;
-  }
-  if (!titleInput || !contentInput) {
-    showNotification("⚠️ Judul dan isi pengumuman tidak boleh kosong!");
-    return;
-  }
+  if (pwdInput !== "UNIPI.Sisfo_1B") return showNotification("❌ Password salah! Akses ditolak.");
+  if (!titleInput || !contentInput) return showNotification("⚠️ Judul dan isi pengumuman tidak boleh kosong!");
   
   const container = document.getElementById('announcementContainer');
   const dateStr = new Date().toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' });
-  
   const article = document.createElement('article');
   article.className = 'announcement-item';
-  article.innerHTML = `
-    <span class="announcement-label">${titleInput.toUpperCase()}</span>
-    <div class="announcement-text">${contentInput}</div>
-    <span class="time">${dateStr}</span>
-  `;
+  article.innerHTML = `<span class="announcement-label">${titleInput.toUpperCase()}</span><div class="announcement-text">${contentInput}</div><span class="time">${dateStr}</span>`;
   container.prepend(article);
-  
   document.getElementById('announcementPassword').value = '';
   document.getElementById('announcementTitle').value = '';
   document.getElementById('announcementContent').value = '';
